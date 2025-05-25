@@ -38,19 +38,7 @@ def factorial(num):
         while (i > 0 and i < num   ):
             factorialValue = factorialValue*i 
             i = i-1
-    print(factorialValue)
     return factorialValue
-
-
-
-
-
-
-
-
-
-
-
 
 def fibonacci(n):
     if n <= 1:
@@ -59,9 +47,41 @@ def fibonacci(n):
         return(fibonacci(n-1)+ fibonacci(n-2))
 
 
-def sum_to_goal():
-    print("sum_to_goal")
 
+def sum_to_goal(dataArr, target):
+    sumPair=[0,0]
+    product = 0
+    
+    #Sort Array
+    sortedArr = sortArr(dataArr)
+    arrLen = len(sortedArr)
+    
+    #find complemntary number that euquals target - array[n]
+    for i in range(arrLen):
+        complimentNum = target-sortedArr[i]
+        
+        #then we search the array for that number 
+        for j in range(arrLen):
+            if(complimentNum == sortedArr[j]):
+                sumPair[0]=sortedArr[j]
+                sumPair[1]=sortedArr[i]
+    
+    product= sumPair[0]*sumPair[1]
+    return product
+   
+              
+
+def sortArr(data): 
+    n = len(data) 
+    i = 1
+    for i in range(n):
+        temp = data[i]
+        j = i-1
+        while temp < data[j] and j>=0:
+            data[j+1] = data[j]
+            j = j-1
+        data[j+1]= temp
+    return data
 
 
 #Function 4cd 
